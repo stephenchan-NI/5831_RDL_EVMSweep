@@ -1,0 +1,13 @@
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Methods.EnvelopeTracking.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Methods.EnvelopeTracking.pdb
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Common.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\bin\Debug\NationalInstruments.ReferenceDesignLibraries.SG.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\bin\Debug\NationalInstruments.ModularInstruments.NIRfsgPlayback.Fx40.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Common.pdb
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\bin\Debug\NationalInstruments.ReferenceDesignLibraries.SG.pdb
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\bin\Debug\NationalInstruments.ModularInstruments.NIRfsgPlayback.Fx40.xml
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\obj\Debug\Envelope Tracking.csprojAssemblyReference.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\obj\Debug\Envelope Tracking.csproj.CoreCompileInputs.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\obj\Debug\Envelope Tracking.csproj.CopyComplete
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\obj\Debug\NationalInstruments.ReferenceDesignLibraries.Methods.EnvelopeTracking.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\Envelope Tracking\obj\Debug\NationalInstruments.ReferenceDesignLibraries.Methods.EnvelopeTracking.pdb

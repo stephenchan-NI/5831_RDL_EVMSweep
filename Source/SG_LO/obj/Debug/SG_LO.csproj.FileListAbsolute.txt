@@ -1,0 +1,17 @@
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\SG_LO.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\SG_LO.pdb
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\NationalInstruments.Common.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\NationalInstruments.ModularInstruments.NIRfsg.Fx45.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\NationalInstruments.ModularInstruments.NIRfsgPlayback.Fx40.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\Ivi.Driver.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\NationalInstruments.ModularInstruments.Common.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\NationalInstruments.Common.xml
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\NationalInstruments.ModularInstruments.NIRfsg.Fx45.xml
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\NationalInstruments.ModularInstruments.NIRfsgPlayback.Fx40.xml
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\Ivi.Driver.xml
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\bin\Debug\NationalInstruments.ModularInstruments.Common.xml
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\obj\Debug\SG_LO.csprojAssemblyReference.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\obj\Debug\SG_LO.csproj.CoreCompileInputs.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\obj\Debug\SG_LO.csproj.CopyComplete
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\obj\Debug\SG_LO.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SG_LO\obj\Debug\SG_LO.pdb

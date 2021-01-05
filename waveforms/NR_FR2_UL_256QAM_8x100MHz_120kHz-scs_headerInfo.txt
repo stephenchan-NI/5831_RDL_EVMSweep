@@ -1,0 +1,24 @@
+[File]
+Date=08/25/2020
+Time=09:59:20
+FileVers=
+Packager=44540/205
+PackSWVers=20.00
+Samples=9984000
+Title=C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\waveforms\NR_FR2_UL_256QAM_8x100MHz_120kHz-scs
+SampleRate=998400000.000000
+Description=
+Datatype=Single Precision
+NumWaveforms=MultipleWaveform
+FullscaleBackoff=-1.5
+CarrierBandwidth=7.2e+08
+SignalBandwidth=7.98144e+08
+CalculatedPapr=12.38
+RMS=1968
+RelRMS=-12.3847
+CrestFactor= 12.3847
+LevelMode=
+AlcBW=Narrow
+ModulationBandwidth=798144000
+WaveformFileVersion=2.0.0
+Headroom=14.00

@@ -1,0 +1,4 @@
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx NR\obj\Debug\RFmxNR.csprojAssemblyReference.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx NR\obj\Debug\RFmxNR.csproj.CoreCompileInputs.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx NR\obj\Debug\NationalInstruments.ReferenceDesignLibraries.RFmxNR.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx NR\obj\Debug\NationalInstruments.ReferenceDesignLibraries.RFmxNR.pdb

@@ -1,0 +1,9 @@
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\bin\Debug\NationalInstruments.ReferenceDesignLibraries.RFmxInstr.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\bin\Debug\NationalInstruments.ReferenceDesignLibraries.RFmxInstr.pdb
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Common.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Common.pdb
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\obj\Debug\RFmxInstr.csprojAssemblyReference.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\obj\Debug\RFmxInstr.csproj.CoreCompileInputs.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\obj\Debug\RFmxInstr.csproj.CopyComplete
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\obj\Debug\NationalInstruments.ReferenceDesignLibraries.RFmxInstr.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\SA\RFmx Instr\obj\Debug\NationalInstruments.ReferenceDesignLibraries.RFmxInstr.pdb

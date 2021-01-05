@@ -1,0 +1,7 @@
+C:\Users\LocalAdmin\Desktop\stchan\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Methods.DPD.dll
+C:\Users\LocalAdmin\Desktop\stchan\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Methods.DPD.pdb
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\RFmxDPD\obj\Debug\RFmxDPD.csprojAssemblyReference.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\RFmxDPD\obj\Debug\RFmxDPD.csproj.CoreCompileInputs.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\RFmxDPD\obj\Debug\RFmxDPD.csproj.CopyComplete
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\RFmxDPD\obj\Debug\NationalInstruments.ReferenceDesignLibraries.Methods.DPD.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Methods\RFmxDPD\obj\Debug\NationalInstruments.ReferenceDesignLibraries.Methods.DPD.pdb

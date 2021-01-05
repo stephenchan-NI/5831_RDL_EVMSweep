@@ -1,0 +1,6 @@
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Supply\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Supply.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Supply\bin\Debug\NationalInstruments.ReferenceDesignLibraries.Supply.pdb
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Supply\obj\Debug\Supply.csprojAssemblyReference.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Supply\obj\Debug\Supply.csproj.CoreCompileInputs.cache
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Supply\obj\Debug\NationalInstruments.ReferenceDesignLibraries.Supply.dll
+C:\Users\LocalAdmin\Desktop\stchan\NAPA\External_LO2_5831\RDL\Source\Supply\obj\Debug\NationalInstruments.ReferenceDesignLibraries.Supply.pdb

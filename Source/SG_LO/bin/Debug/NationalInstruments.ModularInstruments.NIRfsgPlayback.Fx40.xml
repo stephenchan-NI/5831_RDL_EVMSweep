@@ -1,0 +1,1143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NationalInstruments.ModularInstruments.NIRfsgPlayback.Fx40</name>
+    </assembly>
+    <members>
+        <member name="T:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource.xArgumentNull">
+            <summary>
+              Looks up a localized string similar to The argument cannot be null..
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource.xErrorCode">
+            <summary>
+              Looks up a localized string similar to Error code.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource.xExceptionMessagePrefix">
+            <summary>
+              Looks up a localized string similar to NationalInstruments.ModularInstruments.NIRfsgPlayback.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource.xInternalSoftwareError">
+            <summary>
+              Looks up a localized string similar to An Internal Software Error has Occured..
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource.xInvalidWaveformType">
+            <summary>
+              Looks up a localized string similar to Invalid Waveform Type..
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.ModularInstruments.NIRfsgPlayback.Internal.Resource.xOutofMemoryLV">
+            <summary>
+              Looks up a localized string similar to Out of Memory happened within LabVIEW..
+            </summary>
+        </member>
+        <member name="T:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback">
+            <summary>
+            Provides methods to generate the waveforms saved in a TDMS file using the NI-RFSG driver.
+            </summary>
+            <lastupdated>8/5/2015 3:57:58 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadAndDownloadWaveformFromFile(System.IntPtr,System.String,System.String)">
+            <summary>
+            Reads a waveform from a TDMS file, and downloads it to the NI RF vector signal generator.
+            <para>This method reads the following information from the TDMS file and writes it into the NI-RFSG waveform database:</para>
+            <list type="bullet">
+            <item><description>
+            Sample Rate </description></item>
+            <item><description>
+            PAPR and Runtime Scaling, or Peak Power Adjustment </description></item>
+            <item><description>
+            RF Blanking Marker Locations </description></item>
+            <item><description>
+            RF Blanking Enabled</description></item>
+            <item><description> 
+            Burst Start Locations </description></item>
+            <item><description>
+            Burst Stop Locations </description></item>
+            <item><description>
+            RF Blanking Marker Source </description></item>
+            <item><description>
+            Signal Bandwidth </description></item>
+            <item><description>
+            Waveform Size </description></item>
+            </list>
+            <para>If RF blanking marker locations are present in the file, but burst locations are not present, burst locations are calculated from RF blanking marker locations and stored in the NI-RFSG waveform database.</para>
+            <para>This method internally sets the RfsgRF.PowerLevelType property value to PeakPower before writing the waveform to NI-RFSG device memory. This method completes this tasks for each NI-RFSG session.</para>
+            <para>This method returns an error, if the TDMS file has more than one waveform.</para>
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="rfsgWaveformName">Specifies the waveform name used to store the waveform in the NI-RFSG device memory and waveform
+            properties in the NI-RFSG waveform database.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>05-04-2018 15:45:15</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadAndDownloadWaveformsFromFile(System.IntPtr[],System.String,System.String)">
+            <summary>
+            <para>Reads the waveforms from a TDMS file, and downloads one waveform into each of the NI RF vector signal generators. The first waveform in the TDMS file is downloaded to the first NI RF vector signal generator and so on, until all the waveforms are downloaded. 
+            </para>
+            <para>This method reads the following information from the TDMS file and writes it into the NI-RFSG waveform database:</para>
+            <list type="bullet">
+            <item><description>
+            Sample Rate </description></item>
+            <item><description>
+            PAPR and Runtime Scaling, or Peak Power Adjustment </description></item>
+            <item><description>
+            RF Blanking Marker Locations </description></item>
+            <item><description>
+            RF Blanking Enabled</description></item>
+            <item><description> 
+            Burst Start Locations </description></item>
+            <item><description>
+            Burst Stop Locations </description></item>
+            <item><description>
+            RF Blanking Marker Source </description></item>
+            <item><description>
+            Signal Bandwidth </description></item>
+            <item><description>
+            Waveform Size </description></item>
+            </list>
+            <para>If RF blanking marker locations are present in the file, but burst locations are not present, burst locations are calculated from RF blanking marker locations and stored in the NI-RFSG waveform database.</para>
+            <para>This method internally sets the RfsgRF.PowerLevelType property value to PeakPower before writing the waveform to NI-RFSG device memory. This method completes this tasks for each NI-RFSG session.</para>
+            <para>This method returns an error, if the number of waveforms in the TDMS file does not match the number of RFSG sessions.</para>
+            </summary>
+            <param name="rfsgSessions">Identifies instruments for multiple RFSG sessions. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="rfsgWaveformName">Specifies the waveform name used to store the waveform in the NI-RFSG device memory and waveform properties in the NI-RFSG waveform database. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>05-04-2018 15:46:05</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformFromFileComplex``1(System.String,NationalInstruments.ComplexWaveform{``0}@)">
+            <summary>
+            Reads the waveforms from file and returns the waveforms in an output parameter.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="outputWaveform">Returns the data for a complex waveform of ComplexWaveform
+             type, including the start, delta, and actual values.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>8/7/2015 12:22:31 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformFromFileComplex(System.String,NationalInstruments.ComplexWaveform{NationalInstruments.ComplexSingle}@)">
+            <summary>
+            Reads the waveform from file and returns the waveform in an output parameter.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="outputWaveform">Returns the data for a complex waveform of ComplexSingle type, including the start, delta, and actual values.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>8/6/2015 3:00:00 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformFromFileComplex(System.String,NationalInstruments.ComplexWaveform{NationalInstruments.ComplexDouble}@)">
+            <summary>
+            Reads the waveform from file and returns the waveform in an output parameter.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="outputWaveform">Returns the data for a complex waveform of ComplexDouble datatype, including the start, delta, and actual values.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>8/6/2015 3:00:00 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformsFromFileComplex``1(System.String,System.Int32,NationalInstruments.ComplexWaveform{``0}[]@)">
+            <summary>
+            Reads the waveforms from file, and returns the waveforms in an output parameter. 
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="numberOfWaveforms">Specifies the number of waveforms.</param>
+            <param name="outputWaveforms">Returns the array of complex waveforms of ComplexWaveform
+             read from the file. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>8/7/2015 12:23:45 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformsFromFileComplex(System.String,System.Int32,NationalInstruments.ComplexWaveform{NationalInstruments.ComplexSingle}[]@)">
+            <summary>
+            Reads the waveforms from file, and returns the waveforms in an output parameter. 
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="numberOfWaveforms">Specifies the number of waveforms.</param>
+            <param name="outputWaveforms">Returns the array of complex waveforms of ComplexSingle read from the file. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>8/6/2015 3:00:04 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformsFromFileComplex(System.String,System.Int32,NationalInstruments.ComplexWaveform{NationalInstruments.ComplexDouble}[]@)">
+            <summary>
+            Reads the waveforms from file, and returns the waveforms in an output parameter. 
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="numberOfWaveforms">Specifies the number of waveforms.</param>
+            <param name="outputWaveforms">Returns the array of complex waveforms of ComplexDouble read from the file. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>8/6/2015 3:00:04 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ClearWaveform(System.IntPtr,System.String)">
+            <summary>
+            Deletes the waveform from the NI-RFSG device memory and removes the waveform properties from the NI-RFSG waveform properties database for the specified device.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform that has to be deleted from the database.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>6/6/2016 12:14:01 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ClearAllWaveforms(System.IntPtr)">
+            <summary>
+            Deletes the waveforms from the NI-RFSG device memory and removes all the waveform properties from the NI-RFSG waveform properties database for the specified device.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>6/6/2016 12:14:11 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformSampleRate(System.IntPtr,System.String,System.Double)">
+            <summary>
+            Stores the sample rate, which you specify in the <format type="italics">sampleRate</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to store the sample rate.</param>
+            <param name="sampleRate">Specifies the sampling rate to store in the NI-RFSG waveform database. This value is expressed in samples per second (S/s).</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:04:49 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformPeakPowerAdjustment(System.IntPtr,System.String,System.Double)">
+            <summary>
+            Stores the peak power adjustment, which you specify in the <format type="italics">peakPowerAdjustment</format>  parameter, in the RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to store the peak power adjustment.</param>
+            <param name="peakPowerAdjustment">Specifies the peak power adjustment to store in the RFSG waveform database.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:03:42 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformRFBlankingMarkerLocations(System.IntPtr,System.String,System.Int32[])">
+            <summary>
+            Stores the RF blanking marker positions, which you specify in the <format type="italics">markerLocations</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to store the RF blanking marker locations.</param>
+            <param name="markerLocations">Specifies the RF blanking marker positions to store. It is an array of sample positions, within the waveform, of the marker events that you can use to toggle the RF blanking state.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:04:12 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformBurstStartLocations(System.IntPtr,System.String,System.Int32[])">
+            <summary>
+            Stores the RF burst start locations, which you specify in the <format type="italics">burstStartLocations</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to store the RF burst start locations.</param>
+            <param name="burstStartLocations">Specifies the burst start locations to store in the NI-RFSG waveform database.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:02:23 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformBurstStopLocations(System.IntPtr,System.String,System.Int32[])">
+            <summary>
+            Stores the RF burst stop positions, which you specify in the <format type="italics">burstStopLocations parameter</format>, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to store the RF burst stop locations.</param>
+            <param name="burstStopLocations">Specifies the burst stop locations to store in the NI-RFSG waveform database.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:02:58 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformSampleRate(System.IntPtr,System.String,System.Double@)">
+            <summary>
+            Returns the sample rate stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter 
+             as the key to retrieve the waveform properties.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the sample rate value.</param>
+            <param name="sampleRate">Returns the sampling rate stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> 
+             parameter. This value is expressed in samples per second (S/s). </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:00:58 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformPeakPowerAdjustment(System.IntPtr,System.String,System.Double@)">
+            <summary>
+            Returns the value of the Peak Power Adjustment property stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter
+             as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the peak power adjustment value.</param>
+            <param name="peakPowerAdjustment">Returns the Peak Power Adjustment property value stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> parameter.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:59:55 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformRFBlankingMarkerLocations(System.IntPtr,System.String,System.Int32[]@)">
+            <summary>
+            Returns the RF blanking marker positions property stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the retrieve RF blanking marker locations.</param>
+            <param name="markerLocations">Returns the array of RF blanking marker positions stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> 
+             parameter.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:00:23 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformBurstStartLocations(System.IntPtr,System.String,System.Int32[]@)">
+            <summary>
+            Returns the RF burst start positions property stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter
+             as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NI-RFSG DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the waveform name for which you want to retrieve the RF burst start locations.</param>
+            <param name="burstStartLocations">Returns the array of RF burst start positions stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> 
+             parameter.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:59:16 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformBurstStopLocations(System.IntPtr,System.String,System.Int32[]@)">
+            <summary>
+            Returns the RF burst stop positions property stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter
+             as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the RF burst stop locations.</param>
+            <param name="burstStopLocations">Returns the array of RF burst stop positions stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> 
+             parameter.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:59:26 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.SetScriptToGenerateSingleRfsg(System.IntPtr,System.String)">
+            <summary>
+            Sets the NI-RFSG driver to generate the waveforms specified in the script at the average power you configure on the NI-RFSG Power Level method.
+             If you have enabled RF Blanking for the waveform, NI-RFSG is configured to correctly blank the output during the idle times of the waveform.
+            <para>The NI-RFSG IQ Rate method is set to the sample rate of the waveform in the script.</para>
+            <para>If the version of the waveform file is 2.0 or later, the method,</para>
+            <list type="bullet">
+            <item>
+            <description>
+            Sets the NI-RFSG Peak Power Adjustment method to the minimum value of the peak to average power ratio (PAPR) of the waveform in the script. 
+            </description>
+            </item>
+            <item>
+            <description>Sets the NI-RFSG Pre-filter Gain method to the minimum value of the runtime scaling of the waveform in the script.
+            </description>
+            </item>
+            </list>
+            <p>If the version of the waveform file is lesser than 2.0, the method,</p>
+            <list type="bullet">
+            <item>
+            <description>
+            Sets the NI-RFSG Peak Power Adjustment method to the minimum value of the Headroom of the waveform in the script.
+            </description>
+            </item>
+            <item>
+            <description>Resets the NI-RFSG Pre-filter Gain method.
+            </description>
+            </item>
+            </list>
+            <p>For the waveforms that have the RF blanking Enabled method set to True, this method also does the following:</p>
+            <list type="bullet">
+            <item>
+            <description>
+            If the values of RF blanking marker source of all the waveforms are empty, then the first unused marker in the script is set as the RF Blanking Source.
+            </description>
+            </item>
+            <item>
+            <description>Modifies the script to add the waveform burst start and stop locations as the RF Blanking marker locations
+            </description>
+            </item>
+            </list>
+            <p>For PXIe-5840/5841 and PXIe-5830/5831 devices,</p>
+            <list type="bullet">
+            <item>
+            <description>
+            Sets the NI-RFSG Signal Bandwidth method to the maximum signal bandwidth of the waveform in the script, if you set the LO Offset Mode to <format type="bold">Auto</format>.
+             If no signal bandwidth is found in any waveform of the script, the NI-RFSG Signal Bandwidth method is set to 0.8 times the Sample Rate.
+            </description>
+            </item>
+            <item>
+            <description>Resets the NI-RFSG Signal Bandwidth, if you set the LO Offset Mode to <format type="bold">No Offset</format>.
+            </description>
+            </item>
+            </list>
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="scriptText">Specifies the script that controls the waveform generation. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>12-09-2019 14:42:48</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.SetScriptToGenerateMultipleRfsg(System.IntPtr[],System.String)">
+            <summary>
+            Sets the NI-RFSG driver to generate the waveforms specified in the script at the average power you configure on the NI-RFSG Power Level method.
+             If you have enabled RF Blanking for the waveform, NI-RFSG is configured to correctly blank the output during the idle times of the waveform.
+            <para>The NI-RFSG IQ Rate method is set to the sample rate of the waveforms in the script.</para>
+            <para>If the version of the waveform file is 2.0 or later, the method,</para>
+            <list type="bullet">
+            <item>
+            <description>
+            Sets the NI-RFSG Peak Power Adjustment method to the minimum value of the peak to average power ratio (PAPR) of the waveforms in the script. 
+            </description>
+            </item>
+            <item>
+            <description>Sets the NI-RFSG Pre-filter Gain method to the minimum value of the runtime scaling of the waveforms in the script.
+            </description>
+            </item>
+            </list>
+            <p>If the version of the waveform file is lesser than 2.0, the method,</p>
+            <list type="bullet">
+            <item>
+            <description>
+            Sets the NI-RFSG Peak Power Adjustment method to the minimum value of the Headroom of the waveforms in the script.
+            </description>
+            </item>
+            <item>
+            <description>Resets the NI-RFSG Pre-filter Gain method.
+            </description>
+            </item>
+            </list>
+            <p>For the waveforms that have the RF blanking Enabled method set to True, this VI also does the following:</p>
+            <list type="bullet">
+            <item>
+            <description>
+            If the values of RF blanking marker source of all the waveforms are empty, then the first unused marker in the script is set as the RF Blanking Source.
+            </description>
+            </item>
+            <item>
+            <description>Modifies the script to add the waveform burst start and stop locations as the RF Blanking marker locations
+            </description>
+            </item>
+            </list>
+            <p>For PXIe-5840/5841 and PXIe-5830/5831 devices,</p>
+            <list type="bullet">
+            <item>
+            <description>
+            Sets the NI-RFSG Signal Bandwidth method to the maximum signal bandwidth of the waveform(s) in the script, if you set the LO Offset Mode to <format type="bold">Auto</format>.
+             If no signal bandwidth is found in any waveform of the script, the NI-RFSG Signal Bandwidth method is set to 0.8 times the Sample Rate.
+            </description>
+            </item>
+            <item>
+            <description>Resets the NI-RFSG Signal Bandwidth, if you set the LO Offset Mode to <format type="bold">No Offset</format>.
+            </description>
+            </item>
+            </list>
+            </summary>
+            <param name="rfsgSessions">Identifies instruments for multiple RFSG sessions. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="scriptText">Specifies the script that controls the waveform generation. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>12-09-2019 14:42:40</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadPeakPowerAdjustmentFromFile(System.String,System.Int32,System.Double@)">
+            <summary>
+            Returns the value of the peak power adjustment stored in the file. This method uses the <format type="italics">waveformIndex</format> 
+             as the key to read the waveform properties.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the peak power adjustment location.
+            </param>
+            <param name="peakPowerAdjustment">Returns the  peak power adjustment value, stored in the file for the waveform index you specified in the <format type="italics">waveformIndex</format> parameter.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:56:05 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadSampleRateFromFile(System.String,System.Int32,System.Double@)">
+            <summary>
+            Returns the sample rate stored in the file. This method uses the <format type="italics">waveformIndex</format> 
+             as the key to read the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the sample rate.
+            </param>
+            <param name="sampleRate">Returns the sample rate value, stored in the file for the waveform number you specified in the <format type="italics">waveformIndex</format> parameter.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:56:52 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadRFBlankingMarkerLocationsFromFile(System.String,System.Int32,System.Int32[]@)">
+            <summary>
+            Returns the RF blanking marker locations stored in the file. This method uses the <format type="italics">waveformIndex</format> as the key to read the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="waveformIndex">specifies the waveform number in the file for which you want to read the RF blanking marker locations. 
+            </param>
+            <param name="markerLocations">returns an array of the RF blanking marker location values, stored in the file for the waveform number which you specified in the <format type="italics">waveformIndex</format> parameter. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:56:24 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadBurstStartLocationsFromFile(System.String,System.Int32,System.Int32[]@)">
+            <summary>
+            Returns the RF burst start locations stored in the file. This method uses the <format type="italics">waveformIndex</format> 
+             as the key to read the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the burst start locations.
+            </param>
+            <param name="burstStartLocations">Returns an array of the burst start locations, stored in the file for the waveform number which you specified in the <format type="italics">waveformIndex</format> parameter. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:53:43 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadBurstStopLocationsFromFile(System.String,System.Int32,System.Int32[]@)">
+            <summary>
+            Returns the RF burst stop locations stored in the file. This method uses the <format type="italics">waveformIndex</format> 
+             as the key to read the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the burst stop locations. 
+            </param>
+            <param name="burstStopLocations">Returns an array of the burst stop locations, stored in the file for the waveform number which you specified in the <format type="italics">waveformIndex</format> parameter. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:53:59 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.GetError(System.Int32@,System.String@)">
+            <summary>
+            Gets the latest error code and description.
+            </summary>
+            <param name="errorCode">Upon return, contains the latest error code.</param>
+            <param name="errorDescription">Upon return, contains the latest error description.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes an error or warning condition.</returns>
+            <lastupdated>8/6/2015 2:59:45 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformRFBlankingMarkerSource(System.IntPtr,System.String,System.String)">
+            <summary>
+            Stores the RF blanking marker source, which you specify in the <format type="italics">markerSource</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle
+            method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to store the RF blanking marker source.</param>
+            <param name="markerSource">Specifies the RF blanking marker source to store in the NI-RFSG waveform database. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>11/22/2016 2:34:28 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformRFBlankingEnabled(System.IntPtr,System.String,System.Boolean)">
+            <summary>
+            Stores the RF blanking enabled value, which you specify in the <format type="italics">rfBlankingEnabled</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NI-RFSG DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to store the RF blanking enabled value.</param>
+            <param name="rfBlankingEnabled">Specifies the RF blanking enabled to store in the NI-RFSG waveform database. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:53:11 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformRFBlankingMarkerSource(System.IntPtr,System.String,System.String@)">
+            <summary>
+            Returns the RF blanking marker source stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter 
+             as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the RF blanking marker source value.</param>
+            <param name="markerSource">Returns the RF blanking marker source stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format>
+             parameter.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:00:33 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformRFBlankingEnabled(System.IntPtr,System.String,System.Boolean@)">
+            <summary>
+            Returns the RF blanking enabled value stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter
+             as the key to retrieve the waveform properties.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the RF blanking enabled value.</param>
+            <param name="rfBlankingEnabled">Returns the RF blanking enabled stored in the NI-RFSG waveform database for the waveform which you specified in the <format type="italics">waveformName</format> parameter.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 6:00:09 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadRFBlankingMarkerSourceFromFile(System.String,System.Int32,System.String@)">
+            <summary>
+            Returns the RF blanking marker source stored in the file. This method uses the <format type="italics">waveformIndex</format> as the key to read the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the RF blanking marker source value. 
+            </param>
+            <param name="markerSource">Returns the RF blanking marker source value, stored in the file for the waveform number which you specified in the <format type="italics">waveformIndex</format> parameter. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:56:33 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadRFBlankingEnabledFromFile(System.String,System.Int32,System.Boolean@)">
+            <summary>
+            Returns the RF blanking enabled value stored in the file. This method uses the <format type="italics">waveformIndex</format> 
+             as the key to read the waveform properties.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the RF blanking enabled. 
+            </param>
+            <param name="rfBlankingEnabled">Returns the RF blanking enabled value, stored in the file for the waveform number which you specified in the <format type="italics">waveformIndex</format> parameter. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:56:15 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.DownloadUserWaveform``1(System.IntPtr,System.String,NationalInstruments.ComplexWaveform{``0},System.Boolean)">
+            <summary>
+            Normalizes the input waveform, calculates headroom, stores the headroom and I/Q rate, and writes the normalized waveform into the NI RF vector signal generator.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NI-RFSG DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the waveform name used to store the waveform in the NI-RFSG device memory and waveform
+            properties in the NI-RFSG database.</param>
+            <param name="waveform"></param>
+            <param name="burstPresent"></param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>8/7/2015 12:22:31 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.DownloadUserWaveform(System.IntPtr,System.String,NationalInstruments.ComplexWaveform{NationalInstruments.ComplexSingle},System.Boolean)">
+            <summary>
+            Normalizes the input waveform and writes it into the NI RF vector signal generator. This VI computes the peak to average power ratio (PAPR) using the bursts in the waveform, stores the PAPR, sample rate, waveform size, and runtime scaling value of -1.5 dB in the NI-RFSG waveform database.</summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the waveform name used to store the waveform in the NI-RFSG device memory and waveform
+            properties in the NI-RFSG database.</param>
+            <param name="waveform">Specifies an array of the complex single waveform clusters which has to be downloaded to the device.
+            </param>
+            <param name="burstPresent">Specifies whether the burst is present in the given waveform. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>3/23/2017 12:39:01 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.DownloadUserWaveform(System.IntPtr,System.String,NationalInstruments.ComplexWaveform{NationalInstruments.ComplexDouble},System.Boolean)">
+            <summary>
+            Normalizes the input waveform and writes it into the NI RF vector signal generator. This VI computes the peak to average power ratio (PAPR) using the bursts in the waveform, stores the PAPR, sample rate, waveform size, and runtime scaling value of -1.5 dB in the NI-RFSG waveform database.</summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the waveform name used to write the waveform to the NI-RFSG device memory.</param>
+            <param name="waveform">Specifies an array of the complex double waveform clusters which has to be downloaded to the device.
+            </param>
+            <param name="burstPresent">specifies whether the burst is present in the given waveform. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>3/23/2017 12:38:47 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveDownloadedWaveformNames(System.IntPtr,System.String[]@)">
+            <summary>
+            Returns the names of the waveforms that are stored in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformNames">Returns an array of the waveform names that are stored in the NI-RFSG waveform database.
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>11/28/2016 1:00:18 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformSignalBandwidth(System.IntPtr,System.String,System.Double)">
+            <summary>
+            Stores the signal bandwidth, which you specify in the <format type="italics">signalBandwidth</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the waveform name for which you want to store the signal bandwidth.
+            </param>
+            <param name="signalBandwidth">Specifies the signal bandwidth to store in the NI-RFSG waveform database. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>11/25/2016 2:34:36 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformLOOffsetMode(System.IntPtr,System.String,NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlaybackLOOffsetMode)">
+            <summary>
+            Stores the LO offset mode value, which you specify in the <format type="italics">value</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the waveform name for which you want to store the LO offset mode value.
+            </param>
+            <param name="value">Specifies the LO offset mode to store in the NI-RFSG database. The default value is <see cref="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlaybackLOOffsetMode.Auto" crefType="PartiallyQualified"/>.
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>11/25/2016 2:34:20 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformSignalBandwidth(System.IntPtr,System.String,System.Double@)">
+            <summary>
+            Returns the signal bandwidth stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the waveform signal bandwidth.
+            </param>
+            <param name="signalBandwidth">Returns the signal bandwidth stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> parameter. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:51:56 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformLOOffsetMode(System.IntPtr,System.String,NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlaybackLOOffsetMode@)">
+            <summary>
+            Returns the LO offset mode value stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the waveform LO offset mode value.
+            </param>
+            <param name="value">Returns the LO offset mode value stored in the NI-RFSG waveform database for the waveform number which you specified in the <format type="italics">waveformName</format> parameter. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:42:10 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadSignalBandwidthFromFile(System.String,System.Int32,System.Double@)">
+            <summary>
+            Returns the signal bandwidth stored in the file. This method uses the <format type="italics">waveformIndex</format> parameter as the key to retrieve the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.
+            </param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the signal bandwidth. 
+            </param>
+            <param name="signalBandwidth">Returns the signal bandwidth stored in the file for the waveform number that you specified in the <format type="italics">waveformIndex</format> parameter.
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>11/25/2016 2:35:15 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformPapr(System.IntPtr,System.String,System.Double)">
+            <summary>
+            Stores the peak to average power ratio (PAPR), which you specify in the <format type="italics">PAPR</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the waveform name for which you want to store the PAPR.
+            </param>
+            <param name="papr">Specifies the PAPR to store in the NI-RFSG database. This value is expressed in dB. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:32:49 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformRuntimeScaling(System.IntPtr,System.String,System.Double)">
+            <summary>
+            Stores the runtime scaling value, which you specify in the <format type="italics">runtimeScaling</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the waveform name for which you want to store the runtime scaling value.
+            </param>
+            <param name="runtimeScaling">Specifies the runtime scaling value to store in the NI-RFSG database. This value is expressed in dB. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:33:02 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformPapr(System.IntPtr,System.String,System.Double@)">
+            <summary>
+            Returns the peak to average power ratio (PAPR) stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the PAPR.
+            </param>
+            <param name="papr">Returns the PAPR stored in the NI-RFSG database for the waveform you specified in the <format type="italics">waveformName</format> parameter. This value is expressed in dB. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:36:01 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformRuntimeScaling(System.IntPtr,System.String,System.Double@)">
+            <summary>
+            Returns the runtime scaling value stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the runtime scaling value.
+            </param>
+            <param name="runtimeScaling">Returns the runtime scaling value stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> parameter. This value is expressed in dB. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:34:19 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadPaprFromFile(System.String,System.Int32,System.Double@)">
+            <summary>
+            Returns the peak to average power ratio (PAPR) stored in the file. This method uses the <format type="italics">waveformIndex</format> as the key to read the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the PAPR.
+            </param>
+            <param name="papr">Returns the PAPR stored in the file for the waveform number you specified in the <format type="italics">waveformIndex</format> parameter. This value is expressed in dB. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:55:56 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadRuntimeScalingFromFile(System.String,System.Int32,System.Double@)">
+            <summary>
+            Returns the runtime scaling value stored in the file. This method uses the <format type="italics">waveformIndex</format> 
+             as the key to read the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the runtime scaling value.
+            </param>
+            <param name="runtimeScaling">Returns the runtime scaling value stored in the file for the waveform number you specified in the <format type="italics">waveformIndex</format> parameter. This value is expressed in dB. </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>2/27/2017 5:56:43 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreWaveformSize(System.IntPtr,System.String,System.Int32)">
+            <summary>
+            Stores the size of the waveform, which you specify in the <format type="italics">waveformSize</format> parameter, in the NI-RFSG waveform database.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to store the waveform size.</param>
+            <param name="waveformSize">Specifies the size of the waveform to store in the NI-RFSG waveform database. This value is expressed in samples.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>3/2/2017 11:05:54 AM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformSize(System.IntPtr,System.String,System.Int32@)">
+            <summary>
+            Returns the size of the waveform stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the waveform size.</param>
+            <param name="waveformSize">Specifies the size of the waveform stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> parameter. This value is expressed in samples.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>3/2/2017 11:05:43 AM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformSizeFromFile(System.String,System.Int32,System.Int32@)">
+            <summary>
+            Returns the size of the waveform stored in the file. This method uses the <format type="italics">waveformIndex</format> parameter as the key to read the waveform property.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.</param>
+            <param name="waveformIndex">Specifies the waveform number in the file for which you want to read the waveform size. 
+            </param>
+            <param name="waveformSize">Returns the size of the waveform stored in the file for the waveform number that you specified in the <format type="italics">waveformIndex</format>  parameter. This value is expressed in samples.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>3/2/2017 11:05:35 AM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformFromFileByIndexComplex``1(System.String,System.Int32,NationalInstruments.ComplexWaveform{``0}@)">
+            <summary>
+            Reads the waveforms from file and returns the waveforms in an output parameter.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="waveformIndex"> </param>
+            <param name="outputWaveform">Returns the data for a complex waveform of ComplexWaveform
+             type, including the start, delta, and actual values.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>8/7/2015 12:22:31 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformFromFileByIndexComplex(System.String,System.Int32,NationalInstruments.ComplexWaveform{NationalInstruments.ComplexSingle}@)">
+            <summary>
+            Reads the waveform from file and returns the waveform in an output parameter.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="waveformIndex">Specifies the index of the waveform that you want to read from the TDMS file. 
+             </param>
+            <param name="outputWaveform">Returns the data for a complex waveform of ComplexSingle type, including the start, delta, and actual values.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>3/23/2017 12:00:19 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformFromFileByIndexComplex(System.String,System.Int32,NationalInstruments.ComplexWaveform{NationalInstruments.ComplexDouble}@)">
+            <summary>
+            Reads the waveform from file and returns the waveform in an output parameter.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveforms.</param>
+            <param name="waveformIndex">Specifies the index of the waveform that you want to read from the TDMS file. </param>
+            <param name="outputWaveform">Returns the data for a complex waveform of ComplexDouble datatype, including the start, delta, and actual values.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>3/23/2017 12:00:24 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveWaveformFileVersion(System.IntPtr,System.String,System.String@)">
+            <summary>
+            Returns the waveform file version stored in the NI-RFSG waveform database. This method uses the <format type="italics">waveformName</format> parameter as the key to retrieve the waveform property.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="waveformName">Specifies the name of the waveform for which you want to retrieve the waveform file version.</param>
+            <param name="waveformFileVersion">Returns the waveform file version of the waveform stored in the NI-RFSG waveform database for the waveform you specified in the <format type="italics">waveformName</format> parameter. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>10/27/2017 5:20:59 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.ReadWaveformFileVersionFromFile(System.String,System.String@)">
+            <summary>
+            Returns the waveform file version of the waveform stored in the file.
+            </summary>
+            <param name="filePath">Specifies the absolute path to the TDMS file from which the playback library reads the waveform.</param>
+            <param name="waveformFileVersion">Returns the waveform file version of the waveform stored in the file.</param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>10/27/2017 5:22:24 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.StoreAutomaticSGSASharedLO(System.IntPtr,System.String,NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackAutomaticSGSASharedLO)">
+            <summary>
+            Stores whether the signal generator’s LO signal can be shared on request by the RFmx driver. It is recommended to use Automatic sharing of local oscillator (LO) in test setups that use a vector signal transceiver (VST) with the NI-RFSG to generate a signal at the DUT's input and the RFmx driver to measure the signal at the DUT's output.
+            <para>When using instruments that do not have LO with excellent phase noise, to minimize the contribution of the instrument's phase noise affecting your measurement, it is recommended to share the LO between the signal generator (SG) and signal analyzer (SA).</para>
+		<para>To enable sharing signal generator’s LO with signal analyzer automatically, setup the device specific physical connections as mentioned in the following table and follow the steps in the mentioned order.</para>
+		<table class="bordered">
+			<tr>
+				<td class="bordered">
+					<format type="bold">PXIe-5840/5841</format>
+				</td>
+				<td class="bordered">SG LO is shared with SA via an external path. Hence you must connect RF Out LO Out to RF In LO In using a cable.</td>
+			</tr>
+			<tr>
+				<td class="bordered">
+					<format type="bold">PXIe-5830/5831</format>
+				</td>
+				<td class="bordered">SG LO is shared with SA via an internal path. Hence the external cable connection is not required.</td>
+			</tr>
+		</table>
+		<ol>
+			<li>Enable Automatic SG SA Shared LO on NI-RFSG Playback Library</li>
+			<li>Enable Automatic SG SA Shared LO on RFmx</li>
+			<li>Configure other required settings on NI-RFSG and RFmx, including selecting waveforms</li>
+			<li>Initiate NI-RFSG</li>
+			<li>Initiate RFmx</li>
+		</ol>
+		<note>Measurement results might get affected while performing measurements in the RFmx driver if the signal analyzer measurement frequency span is wide enough to capture signal generator LO. In these cases, it is recommended to configure the <format type="bold">NIRfsgPlaybackLOOffsetMode</format> parameter to <format type="bold">NoOffset</format>. </note>
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="channelName">This parameter is reserved for future use.
+            </param>
+            <param name="automaticSGSASharedLO">Specifies the access control of SG LO. 
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>12-09-2019 14:44:08</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlayback.RetrieveAutomaticSGSASharedLO(System.IntPtr,System.String,NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackAutomaticSGSASharedLO@)">
+            <summary>
+            Returns the value of <format type="bold">automatic SG SA shared LO</format> parameter.
+            </summary>
+            <param name="rfsgSession">Identifies the instrument session. The rfsgSession handle is obtained from the NIRfsg.DangerousGetInstrumentHandle method.</param>
+            <param name="channelName">This parameter is reserved for future use.
+            </param>
+            <param name="automaticSGSASharedLO">Returns the access control of SG LO.
+            </param>
+            <returns>Returns the status code of this method. The status code either indicates success or describes a warning condition.
+            </returns>
+            <lastupdated>03-12-2018 15:28:11</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="T:NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackAutomaticSGSASharedLO">
+            <summary>
+            specifies the access control of NI-RFSG LO Out Export. The default value is <format type="bold">Disabled</format>. The following enums define the behavior of the niRFSGPlayback Set Script to Generate VI.
+            </summary>
+            <lastupdated>26-11-2018 15:36:23</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackAutomaticSGSASharedLO.Disabled">
+            <summary>Disables automatic sharing the SG LO with SA.
+            </summary>
+            <lastupdated>26-11-2018 15:35:04</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackAutomaticSGSASharedLO.Enabled">
+            <summary>Enables automatic sharing the SG LO with SA.
+            </summary>
+            <lastupdated>26-11-2018 15:35:08</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="T:NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackConstants">
+            <summary>
+            Provides string constants.
+            </summary>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackConstants.Marker0">
+            <summary>
+            Specifies the source when RF blanking is tied to marker0.
+            </summary>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackConstants.Marker1">
+            <summary>
+            Specifies the source when RF blanking is tied to marker1.
+            </summary>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackConstants.Marker2">
+            <summary>
+            Specifies the source when RF blanking is tied to marker2.
+            </summary>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.RfsgPlaybackConstants.Marker3">
+            <summary>
+            Specifies the source when RF blanking is tied to marker3.
+            </summary>
+        </member>
+        <member name="T:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlaybackLOOffsetMode">
+            <summary>
+            Specifies the LO offset mode to store in the NI-RFSG waveform database. The following enums define the behavior of the 
+            SetScriptToGenerateMultipleRfsgMethod and SetScriptToGenerateSingleRfsgMethod methods on PXIe-5840/5841 and PXIe-5830/5831.
+            </summary><note>Measurement results might get affected while performing measurements in the RFmx driver if the signal analyzer measurement frequency span is wide enough to capture signal generator LO. In these cases, it is recommended to configure the <format type="bold">NIRfsgPlaybackLOOffsetMode</format> parameter to <format type="bold">NoOffset</format>. </note>
+            <lastupdated>12-09-2019 14:46:01</lastupdated>
+            <updatedby></updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlaybackLOOffsetMode.Auto">
+            <summary>
+            Sets the signal bandwidth value to the NI-RFSG SignalBandwidth property, and resets the NI-RFSG UpconverterFrequencyOffset property.
+            </summary>
+            <lastupdated>11/18/2016 2:01:21 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlaybackLOOffsetMode.NoOffset">
+            <summary>
+            Resets the values of the NI-RFSG SignalBandwidth and NI-RFSG UpconverterFrequencyOffset properties.
+            </summary>
+            <lastupdated>11/25/2016 2:57:02 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.ModularInstruments.NIRfsgPlayback.NIRfsgPlaybackLOOffsetMode.Disabled">
+            <summary>
+            Does not set the NI-RFSG SignalBandwidth property or reset the NI-RFSG UpconverterFrequencyOffset property.
+            </summary>
+            <lastupdated>11/17/2016 4:43:36 PM</lastupdated>
+            <updatedby>ITAdmin</updatedby>
+            <approved>False</approved>
+        </member>
+    </members>
+</doc>

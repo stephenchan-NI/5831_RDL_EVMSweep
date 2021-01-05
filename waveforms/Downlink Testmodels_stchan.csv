@@ -1,0 +1,15 @@
+#Following configurations cover NR Downlink Test models,,,,,,,,,
+,,,,,,,,,
+FileName,Subblock,Carrier,LinkDirection,FrequencyRange,ChannelBandwidth,BandwidthPartSubcarrierSpacing,DownlinkChannelConfigurationMode,DownlinkTestModel,DownlinkTestModelDuplexScheme
+NR_FR1_DL_TM1-1_1x5MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,5M,30k,Test Model,TM1.1,TDD
+NR_FR1_DL_TM1-1_1x10MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,10M,30k,Test Model,TM1.1,FDD
+NR_FR1_DL_TM1-1_1x15MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,15M,30k,Test Model,TM1.2,FDD
+NR_FR1_DL_TM1-1_1x20MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,20M,30k,Test Model,TM1.3,FDD
+NR_FR1_DL_TM1-1_1x25MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,25M,30k,Test Model,TM1.4,FDD
+NR_FR1_DL_TM1-1_1x30MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,30M,30k,Test Model,TM1.5,FDD
+NR_FR1_DL_TM1-1_1x40MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,40M,30k,Test Model,TM1.6,FDD
+NR_FR1_DL_TM1-1_1x50MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,50M,30k,Test Model,TM1.7,FDD
+NR_FR1_DL_TM1-1_1x60MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,60M,30k,Test Model,TM1.8,FDD
+NR_FR1_DL_TM1-1_1x70MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,70M,30k,Test Model,TM1.9,FDD
+NR_FR1_DL_TM1-1_1x80MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,80M,30k,Test Model,TM1.10,FDD
+NR_FR1_DL_TM1-1_1x90MHz_60kHz-SCS.rfws,0,0,Downlink,Range 1,90M,30k,Test Model,TM1.11,FDD
