@@ -177,18 +177,18 @@ namespace NationalInstruments.ReferenceDesignLibraries
             }
             if (externalLO == true)
             {
-                rfsgHandle.RF.LocalOscillator["lo2"].LOInPower = LOPower;
-                rfsgHandle.RF.LocalOscillator["lo2"].Source = RfsgLocalOscillatorSource.LOIn;
+                rfsgHandle.RF.LocalOscillator[""].LOInPower = LOPower;
+                rfsgHandle.RF.LocalOscillator[""].Source = RfsgLocalOscillatorSource.LOIn;
                 rfsgHandle.Utility.Commit();
             }
-            LOFreq = rfsgHandle.RF.LocalOscillator["lo2"].LOFrequency;
+            LOFreq = rfsgHandle.RF.LocalOscillator[""].LOFrequency;
 
             //Do nothing; any configuration for LOs with standalone VSGs should be configured manually. 
             //Baseband instruments don't have LOs. Unsupported VSTs must be configured manually.
         }
         public static void UpdateLOPower(NIRfsg rfsgHandle, double LOPower)
         {
-            rfsgHandle.RF.LocalOscillator["lo2"].LOInPower = LOPower;
+            rfsgHandle.RF.LocalOscillator[""].LOInPower = LOPower;
         }
 
         /// <summary>Loads a waveform and relevant properties from a TDMS file.</summary>
@@ -316,7 +316,7 @@ namespace NationalInstruments.ReferenceDesignLibraries
             // Configure the instrument to generate this waveform
             ApplyWaveformAttributes(rfsgHandle, waveform);
             rfsgHandle.Utility.Commit();
-            LOFreq = rfsgHandle.RF.LocalOscillator["lo2"].LOFrequency;
+            LOFreq = rfsgHandle.RF.LocalOscillator[""].LOFrequency;
             // Return updated waveform struct to caller
             return waveform;
         }
@@ -480,11 +480,11 @@ namespace NationalInstruments.ReferenceDesignLibraries
         public static void getUpconverterOffset(NIRfsg rfsgHandle, out double upconverterFreq)
         {
 
-            upconverterFreq = rfsgHandle.RF.LocalOscillator["lo2"].LOFrequency;
+            upconverterFreq = rfsgHandle.RF.LocalOscillator[""].LOFrequency;
         }
         public static void setUpconverterPower(NIRfsg rfsgHandle, double power)
         {
-            rfsgHandle.RF.LocalOscillator["lo2"].LOInPower = power;
+            rfsgHandle.RF.LocalOscillator[""].LOInPower = power;
         }
         public static void setRefClockExport(NIRfsg rfsgHandle)
         {
